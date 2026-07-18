@@ -35,6 +35,19 @@ def create_table(connection):
     connection.commit()
     cursor.close()
 
+def add_student_db(roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status):
+    connection = create_connection()
+    cursor=connection.cursor()
+    
+    cursor.execute("""
+
+        INSERT INTO student(roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""" ,
+        (roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status))
+    connection.commit()
+    cursor.close()
+    connection.close()
+    
 def initialize_database():
     connection=create_connection()
     create_table(connection)
