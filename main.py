@@ -15,7 +15,8 @@ def main_menu():
         print("To Add Student Press - 1")
         print("To View All Students Press - 2")
         print("To Update Student Info Press - 3")
-        print("To Exit Press - 4")
+        print("To Delete Student Info Press - 4")
+        print("To Exit Press - 5")
         print("")
 
         try:
