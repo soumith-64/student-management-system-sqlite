@@ -105,7 +105,16 @@ def update_student_db(oldroll,roll_no,name,dob,department,year,section,father_na
     connection.commit()
     cursor.close()
     connection.close()
-    
+
+def delete_std_db(rollnum):
+    connection=create_connection()
+    cursor=connection.cursor()
+    cursor.execute("""
+
+    DELETE FROM student WHERE roll_no = ?""",
+    (rollnum,)
+    )
+
 def initialize_database():
     connection=create_connection()
     create_table(connection)

@@ -1,4 +1,4 @@
-from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db
+from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db
 from time import sleep
 initialize_database()
 
@@ -36,6 +36,8 @@ def main_menu():
             elif user_choice == 3:
                 update_student_info()
             elif user_choice == 4:
+                delete_student()
+            elif user_choice == 5:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -375,6 +377,28 @@ def update_student_info():
             print(f"❌ ERROR: Failed to update student. Reason: {e}")
             print("="*50 + "\n")
 
+def delete_student():
+    print("---Enter Student Roll Number To Delete---")
+    drollnum = input("Roll Number : ")
+    std_inf = get_std(drollnum)
+    display_student_info(std_inf)
+    print("")
+    print("Are you sure, Do you want to delete the user above\n")
+    print("After deleting you cannot retrive the deleted data \n")
+    print("If yes press -- 1 OR press -- 2")
+    opt={1,2}
+    while True:
+        try:
+            opt_inp = int(input("Your Choice : "))
+        except ValueError:
+            print("Please Enter only numbers")
 
+        if opt_inp == 1:
+            delete_std_db(drollnum)
+            print("User Deleted Sucessfully ✅")
+            break
+        else:
+            print("Operation Aborted Sucessfully ❌")
+            break
 
 main_menu()
