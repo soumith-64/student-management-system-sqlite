@@ -47,6 +47,64 @@ def add_student_db(roll_no,name,dob,department,year,section,father_name,mother_n
     connection.commit()
     cursor.close()
     connection.close()
+
+def view_std():
+    connection = create_connection()
+    cursor=connection.cursor()
+    cursor.execute("""
+            SELECT * FROM student;
+    """
+    )
+    data=cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return data
+
+def get_std(rollnum):
+    connection = create_connection()
+    cursor=connection.cursor()
+    cursor.execute("""
+
+        SELECT * FROM student WHERE roll_no = ?""",
+        (rollnum,)
+        
+        )
+    std_data=cursor.fetchone()
+    cursor.close()
+    connection.close()
+    return std_data
+
+def update_student_db(oldroll,roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status):
+    connection=create_connection()
+    cursor=connection.cursor()
+
+    cursor.execute("""
+            UPDATE student  
+            SET 
+                    roll_no = ?,
+                    name = ?,
+                    dob = ?,
+                    department = ?,
+                    year = ?,
+                    section = ?,
+                    father_name = ?,
+                    mother_name = ?,
+                    parent_phone = ?,
+                    email = ?,
+                    python_marks = ?,
+                    math_marks = ?,
+                    english_marks = ?,
+                    total = ?,
+                    average = ?,
+                    grade = ?,
+                    status = ?
+            WHERE roll_no=?""",
+            (roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status,oldroll,)
+        )
+
+    connection.commit()
+    cursor.close()
+    connection.close()
     
 def initialize_database():
     connection=create_connection()
