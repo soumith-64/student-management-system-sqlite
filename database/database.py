@@ -114,7 +114,51 @@ def delete_std_db(rollnum):
     DELETE FROM student WHERE roll_no = ?""",
     (rollnum,)
     )
+    connection.commit()
+    cursor.close()
+    connection.close()  
 
+
+def statistics_db():
+    connection = create_connection()
+    cursor = connection.cursor()
+    
+    cursor.execute(""" 
+        SELECT COUNT(*), MAX(average), MIN(average), AVG(average) 
+        FROM student 
+    """)
+    cmma = cursor.fetchone()
+    
+    if not cmma or cmma[0] == 0:
+        cursor.close()
+        connection.close()
+        return (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+    total, max_avg, min_avg, avg_avg = cmma
+
+    cursor.execute("""
+        SELECT 
+            COUNT(CASE WHEN status = 'Pass' THEN 1 END),
+            COUNT(CASE WHEN status = 'Fail' THEN 1 END),
+            COUNT(CASE WHEN grade = 'A+' THEN 1 END),
+            COUNT(CASE WHEN grade = 'A' THEN 1 END),
+            COUNT(CASE WHEN grade = 'B' THEN 1 END),
+            COUNT(CASE WHEN grade = 'C' THEN 1 END),
+            COUNT(CASE WHEN grade = 'D' THEN 1 END),
+            COUNT(CASE WHEN grade = 'F' THEN 1 END)
+        FROM student
+    """)
+    counts = cursor.fetchone()
+    
+    cursor.close()
+    connection.close()
+
+    t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f = counts
+
+    return (total, round(max_avg, 2), round(min_avg, 2), round(avg_avg, 2), 
+            t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f)
+    
+    
 def initialize_database():
     connection=create_connection()
     create_table(connection)

@@ -4,7 +4,7 @@ initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5}
+    opt={1,2,3,4,5,6}
     
     while True:
 
@@ -16,7 +16,8 @@ def main_menu():
         print("To View All Students Press - 2")
         print("To Update Student Info Press - 3")
         print("To Delete Student Info Press - 4")
-        print("To Exit Press - 5")
+        print("To View Statistics press - 5")
+        print("To Exit Press - 6")
         print("")
 
         try:
@@ -38,6 +39,8 @@ def main_menu():
             elif user_choice == 4:
                 delete_student()
             elif user_choice == 5:
+                delete_student()
+            elif user_choice == 6:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -381,24 +384,36 @@ def delete_student():
     print("---Enter Student Roll Number To Delete---")
     drollnum = input("Roll Number : ")
     std_inf = get_std(drollnum)
-    display_student_info(std_inf)
-    print("")
-    print("Are you sure, Do you want to delete the user above\n")
-    print("After deleting you cannot retrive the deleted data \n")
-    print("If yes press -- 1 OR press -- 2")
-    opt={1,2}
-    while True:
-        try:
-            opt_inp = int(input("Your Choice : "))
-        except ValueError:
-            print("Please Enter only numbers")
+    if std_inf == None:
+        print("Sorry No Data Found")
+    else:
+        display_student_info(std_inf)
+        print("")
+        print("Are you sure, Do you want to delete the user above\n")
+        print("After deleting you cannot retrive the deleted data \n")
+        print("If yes press -- 1 OR press -- 2")
+        opt={1,2}
+        while True:
+            try:
+                opt_inp = int(input("Your Choice : "))
+            except ValueError:
+                print("Please Enter only numbers")
 
-        if opt_inp == 1:
-            delete_std_db(drollnum)
-            print("User Deleted Sucessfully ✅")
-            break
-        else:
-            print("Operation Aborted Sucessfully ❌")
-            break
+            if opt_inp in opt:
+                delete_std_db(drollnum)
+                print("User Deleted Sucessfully ✅")
+                break
+            elif opt_inp in opt:
+                print("Operation Aborted Sucessfully ❌")
+                break
+
+
+def std_statistcs():
+        
+    
+    
+        print("========================================================================")
+        print("                      STUDENT STATISTICS DASHBOARD                      ")
+        print("========================================================================\n")  
 
 main_menu()
