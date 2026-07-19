@@ -1,4 +1,4 @@
-from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db
+from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db
 from time import sleep
 initialize_database()
 
@@ -39,7 +39,7 @@ def main_menu():
             elif user_choice == 4:
                 delete_student()
             elif user_choice == 5:
-                delete_student()
+                std_statistcs()
             elif user_choice == 6:
                 print("Thank You")
                 print("Waiting to manage your students again")
@@ -400,20 +400,39 @@ def delete_student():
                 print("Please Enter only numbers")
 
             if opt_inp in opt:
-                delete_std_db(drollnum)
-                print("User Deleted Sucessfully ✅")
-                break
-            elif opt_inp in opt:
-                print("Operation Aborted Sucessfully ❌")
-                break
+                if opt == 1:
+                    delete_std_db(drollnum)
+                    print("User Deleted Sucessfully ✅")
+                    break
+                elif opt_inp == 2:
+                    print("Operation Aborted Sucessfully ❌")
+                    break
+            else:
+                print("Try again")
 
-
-def std_statistcs():
+def std_statistcs()     :
         
-    
-    
+        total_std,max_avg,min_avg,avg,t_pass,t_fail,g_ap,g_a,g_b,g_c,g_d,g_f = statistics_db()
+
         print("========================================================================")
         print("                      STUDENT STATISTICS DASHBOARD                      ")
         print("========================================================================\n")  
+        print("📚 Total Students : ",total_std)     
+        print("✅ Passed Students : ",t_pass)
+        print("❌ Failed Students : ",t_fail)
+        print("")
+        print("")
+        print("🏆 Highest Average : ",max_avg)
+        print("📉 Lowest Average : ",min_avg)
+        print("📊 Class Average : ",avg)
+        print("")
+        print("")
+        print("🥇 Grade A+ : ",g_ap)
+        print("🥈 Grade A : ",g_a)
+        print("🥉 Grade B : ",g_b)
+        print("⭐ Grade C : ",g_c)
+        print("📘 Grade D : ",g_d)
+        print("❌ Grade F  : ",g_f)
+
 
 main_menu()

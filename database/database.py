@@ -155,8 +155,7 @@ def statistics_db():
 
     t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f = counts
 
-    return (total, round(max_avg, 2), round(min_avg, 2), round(avg_avg, 2), 
-            t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f)
+    return (total, round(max_avg, 2), round(min_avg, 2), round(avg_avg, 2),t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f )
     
     
 def initialize_database():
