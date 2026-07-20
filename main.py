@@ -7,8 +7,10 @@ from utils.validator import (
     validate_roll_no,
     validate_name,
     validate_department,
-    validate_section
+    validate_section,
+    validate_dob
 )
+from utils.helpers import (get_valid_input)
 from time import sleep
 initialize_database()
 
@@ -118,44 +120,36 @@ def cal_status(py,math,eng):
 
 def get_input():
 
-    while True:
+    rollnum = get_valid_input("Enter Roll Number : ",validate_roll_no, str)
+    print("")
+    name = get_valid_input("Enter Name : ", validate_name, str)
+    print("")
+    dob = get_valid_input("Enter DateOfBirth : ", validate_dob, str)
+    print("")
+    department = get_valid_input("Enter Department Name : ", validate_department, str)
+    print("")
+    year = get_valid_input("Enter Year : ", validate_year, int)
+    print("")
+    section = get_valid_input("Enter Section : ", validate_section, str)
+    print("")
 
-        try:
+    father_name = get_valid_input("Enter Father Name : ", validate_name, str)
+    print("")
+    mother_name = get_valid_input("Enter Mother Name : ", validate_name, str)
+    print("")
+    parent_phone = get_valid_input("Enter Parent Phone Number : ", validate_phone, str)
+    print("")
+    email = get_valid_input("Enter Email : ", validate_email, str)
+    print("")
 
-            rollnum = validate_roll_no(input("Enter Roll Number : ").strip())
-            print("")
-            name = validate_name(input("Enter Name : ").strip())
-            print("")
-            dob = input("Enter DateOfBirth : ").strip()
-            print("")
-            department = validate_department(input("Enter Department Name : ").strip().upper())
-            print("")
-            year = validate_year(int(input("Enter Year : ")))
-            print("")
-            section = validate_section(input("Enter Section : ").strip())
-            print("")
-
-            father_name = validate_name(input("Enter Father Name : ").strip())
-            print("")
-            mother_name = validate_name(input("Enter Mother Name : ").strip())
-            print("")
-            parent_phone = validate_phone(input("Enter Parent Phone Number : ").strip())
-            print("")
-            email = validate_email(input("Enter Email : ").strip())
-            print("")
+    python_marks = get_valid_input("Enter Python Mark : ", validate_marks, float)
+    print("")
+    math_marks = get_valid_input("Enter Math Mark : ", validate_marks, float)
+    print("")
+    english_marks = get_valid_input("Enter English Mark : ", validate_marks, float)
+    print("")
+    
             
-
-            python_marks = validate_marks(float(input("Enter Python Mark : ")))
-            print("")
-            math_marks = validate_marks(float(input("Enter Math Mark : ")))
-            print("")
-            english_marks = validate_marks(float(input("Enter English Mark : ")))
-            print("")
-            break
-
-        except ValueError as e:
-            print(f"❌ {e}")
-        
     total = total_mark(python_marks, math_marks, english_marks)
     avg = average_mark(total)
     grade = cal_grade(avg)

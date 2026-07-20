@@ -85,3 +85,9 @@ def validate_section(sec):
             raise ValueError("Section cannot contain special characters.")
 
     return sec
+
+def validate_dob(dob):
+    temp = str(dob)
+    if not temp:
+        raise ValueError("DOB cannot be empty.")
+    return dob
