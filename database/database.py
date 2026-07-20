@@ -157,7 +157,44 @@ def statistics_db():
 
     return (total, round(max_avg, 2), round(min_avg, 2), round(avg_avg, 2),t_pass, t_fail, g_ap, g_a, g_b, g_c, g_d, g_f )
     
-    
+def search_std_db(opt,val):
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    result=[]
+
+    columns = {
+        1:"roll_no",
+        2:"name",
+        3:"department",
+        4:"year",
+    }
+
+    col = columns.get(opt)
+
+    if not col:
+        cursor.close()
+        connection.close()
+        result = None
+        return result
+
+    if opt == 2:
+        query = f"SELECT * FROM student WHERE {col} LIKE ?" 
+        param = (f"%{val}%",)
+    elif opt == 3:
+        query = f"SELECT * FROM student WHERE {col} LIKE ?" 
+        param = (f"%{val}%",)
+    else:
+        query = f"SELECT * FROM student WHERE {col} = ?"
+        param = (val,)
+
+    cursor.execute(query,param)
+    result = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return result
+
+
 def initialize_database():
     connection=create_connection()
     create_table(connection)

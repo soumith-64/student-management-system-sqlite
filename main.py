@@ -1,10 +1,10 @@
-from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db
+from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db,search_std_db
 from time import sleep
 initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5,6}
+    opt={1,2,3,4,5,6,7}
     
     while True:
 
@@ -15,9 +15,10 @@ def main_menu():
         print("To Add Student Press - 1")
         print("To View All Students Press - 2")
         print("To Update Student Info Press - 3")
-        print("To Delete Student Info Press - 4")
-        print("To View Statistics press - 5")
-        print("To Exit Press - 6")
+        print("To Search Student Info Press - 4")
+        print("To Delete Student Info Press - 5")
+        print("To View Statistics press - 6")
+        print("To Exit Press - 7")
         print("")
 
         try:
@@ -37,10 +38,12 @@ def main_menu():
             elif user_choice == 3:
                 update_student_info()
             elif user_choice == 4:
-                delete_student()
+                search_std()
             elif user_choice == 5:
-                std_statistcs()
+                delete_student()
             elif user_choice == 6:
+                std_statistcs()
+            elif user_choice == 7:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -400,7 +403,7 @@ def delete_student():
                 print("Please Enter only numbers")
 
             if opt_inp in opt:
-                if opt == 1:
+                if opt_inp == 1:
                     delete_std_db(drollnum)
                     print("User Deleted Sucessfully ✅")
                     break
@@ -433,6 +436,42 @@ def std_statistcs()     :
         print("⭐ Grade C : ",g_c)
         print("📘 Grade D : ",g_d)
         print("❌ Grade F  : ",g_f)
+
+
+def search_std():
+    opt={1,2,3,4,5}
+    print(" ---From Which Quantity You Want To Search--- ")
+    print("To Search by ROLL NO press --1")
+    print("To Search by NAME press --2")
+    print("To Search by DEPARTMENT NO press --3")
+    print("To Search by YEAR NO press --4")
+    print("To go back --5\n")
+    while True:
+        try:
+            usr_inp=int(input("Your Option : "))
+            print("")
+            break
+        except ValueError:
+            print("Please enetr only the visible options\n")
+    if usr_inp in opt :
+        print("Enter the search value : ")
+        value = input("Value : ")
+        if usr_inp == 5:
+            print("Returning back..")
+            sleep(.5)
+            return
+        else:
+            res_lst = search_std_db(usr_inp,value)
+
+            if res_lst is None:
+                print("Sorry No data found with given data ")
+                return
+            else:
+                for val in res_lst:
+                    display_student_info(val)
+    else:
+        print("Please enter only give options")
+
 
 
 main_menu()
