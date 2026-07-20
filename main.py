@@ -463,7 +463,7 @@ def search_std():
         else:
             res_lst = search_std_db(usr_inp,value)
 
-            if res_lst is None:
+            if not res_lst:
                 print("Sorry No data found with given data ")
                 return
             else:

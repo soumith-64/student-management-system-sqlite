@@ -175,13 +175,9 @@ def search_std_db(opt,val):
     if not col:
         cursor.close()
         connection.close()
-        result = None
-        return result
+        return []
 
-    if opt == 2:
-        query = f"SELECT * FROM student WHERE {col} LIKE ?" 
-        param = (f"%{val}%",)
-    elif opt == 3:
+    if opt == {2,3}:
         query = f"SELECT * FROM student WHERE {col} LIKE ?" 
         param = (f"%{val}%",)
     else:
