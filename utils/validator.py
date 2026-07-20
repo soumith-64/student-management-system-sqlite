@@ -72,7 +72,7 @@ def validate_department(dept):
         if not (char.isalpha() or char in (" ", "-", "/", "&")):
             raise ValueError("Department cannot contain numbers or special haracters.")
 
-    return dept
+    return sdept.upper()
 
 
 def validate_section(sec):
