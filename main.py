@@ -10,7 +10,7 @@ from utils.validator import (
     validate_section,
     validate_dob
 )
-from utils.helpers import (get_valid_input)
+from utils.helpers import (get_valid_input,get_valid_updt_input)
 from time import sleep
 initialize_database()
 
@@ -289,60 +289,41 @@ def get_updt_input(dtls):
 
     print("To Update type new value or to retain old detail press enter") 
 
-    rollnum = r if (r := input(f"Old Roll Num {old_rollnum} :: Enter New Roll Number : ").strip()) else old_rollnum
-    print("")
-    name = n if (n := input(f"Old Name {old_name} :: Enter Name : ").strip()) else old_name
-    print("")
-    dob = d if (d := input(f"Old DOB {old_dob} :: Enter DateOfBirth : ").strip()) else old_dob
-    print("")
-    department = dep if (dep := input(f"Old Department {old_department} :: Enter Department Name : ").strip().upper()) else old_department
-    print("")
-    
-    while True:
-        try:
-            y_input = input(f"Old Year {old_year} :: Enter Year : ").strip()
-            year = int(y_input) if y_input else old_year
-            print("")
-            break
-        except ValueError:
-            print("❌ Invalid input! Please enter a numeric year.\n")
-            
-    section = s if (s := input(f"Old Section {old_section} :: Enter Section : ").strip()) else old_section
-    print("")
-    father_name = fn if (fn := input(f"Old Father Name {old_father_name} :: Enter Father Name : ").strip()) else old_father_name
-    print("")
-    mother_name = mn if (mn := input(f"Old Mother Name {old_mother_name} :: Enter Mother Name : ").strip()) else old_mother_name
-    print("")
-    parent_phone = pp if (pp := input(f"Old Parent Ph.No {old_parent_phone} :: Enter Parent Phone Number : ").strip()) else old_parent_phone
-    print("")
-    email = e if (e := input(f"Old Email {old_email} :: Enter Email : ").strip()) else old_email
-    print("")
-    
-    while True:
-        try:
-            s_pymark = input(f"Old Python Mark {old_python_marks} :: Enter Python Mark : ")
-            python_marks = float(s_pymark) if s_pymark else old_python_marks
-            print("")
-            s_mm = input(f"Old Math Mark {old_math_marks} :: Enter Math Mark : ")
-            math_marks = float(s_mm) if s_mm else old_math_marks
-            print("")
-            s_em = input(f"Old PytEnglish Mark {old_english_marks} :: Enter English Mark : ")
-            english_marks = float(s_em) if s_em else old_english_marks
-            print("")
-            
-            total = total_mark(python_marks, math_marks, english_marks)
-            if total is not None:
-                break
-            else:
-                print("Re-enter target marks.\n")
-        except ValueError:
-            print("❌ Invalid input! Marks must be valid numbers.")
 
+    nrollno = get_valid_updt_input(f"Old Roll Num {old_rollnum} :: Enter New Roll Number : ",validate_roll_no,str,old_rollnum)
+    print("")
+    name = get_valid_updt_input(f"Old Name {old_name} :: Enter New Name : ",validate_name,str,old_name)
+    print("")
+    dob = get_valid_updt_input(f"Old DoB {old_dob} :: Enter New DoB : ",validate_dob,str,old_dob)
+    print("")
+    department = get_valid_updt_input(f"Old Department {old_department} :: Enter New Department : ",validate_department,str,old_department)
+    print("")
+    
+    year = get_valid_updt_input(f"Old Year {old_year} :: Enter New Year : ",validate_roll_no,int,old_year)
+    print("")       
+    section = get_valid_updt_input(f"Old Section {old_section} :: Enter New Section : ",validate_roll_no,str,old_section)
+    print("")
+    father_name = get_valid_updt_input(f"Old Father Name {old_father_name} :: Enter New Father Name : ",validate_roll_no,str,old_father_name)
+    print("")
+    mother_name =get_valid_updt_input(f"Old Mother Name {old_mother_name} :: Enter New Mother Name : ",validate_roll_no,str,old_mother_name)
+    print("")
+    parent_phone = get_valid_updt_input(f"Old Roll Num {old_parent_phone} :: Enter New Roll Number : ",validate_roll_no,str,old_parent_phone)
+    print("")
+    email = get_valid_updt_input(f"Old Roll Num {old_rollnum} :: Enter New Roll Number : ",validate_roll_no,str,old_rollnum)
+    
+    python_marks = get_valid_updt_input(f"Old Roll Num {old_rollnum} :: Enter New Roll Number : ",validate_roll_no,float,old_rollnum)
+    print("")
+    math_marks = get_valid_updt_input(f"Old Roll Num {old_rollnum} :: Enter New Roll Number : ",validate_roll_no,float,old_rollnum)
+    print("")
+    english_marks = get_valid_updt_input(f"Old English Mark {old_english_marks} :: Enter New English Mark : ",validate_roll_no,float,old_english_marks)
+    print("")
+            
+    total = total_mark(python_marks, math_marks, english_marks)
     avg = average_mark(total)
     grade = cal_grade(avg)
     status = cal_status(python_marks, math_marks, english_marks)
     
-    return (rollnum, name, dob, department, year, section, father_name, 
+    return (nrollno, name, dob, department, year, section, father_name, 
             mother_name, parent_phone, email, python_marks, math_marks, 
             english_marks, total, avg, grade, status)
 
