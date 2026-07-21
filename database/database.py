@@ -191,6 +191,35 @@ def search_std_db(opt,val):
     return result
 
 
+def sort_students_db(column_no, order):
+
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    res = []
+    columns = {
+        1: "roll_no",
+        2: "name",
+        3: "department",
+        4: "year",
+        5: "average",
+        6: "grade",
+        7: "created_at"
+    }
+    col = columns.get(column_no)
+
+    if not col:
+        cursor.close()
+        connection.close()
+        return []
+
+    cursor.execute(f""" SELECT * FROM student ORDER BY {col} {order} """)
+    res = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+    return res
+
 def initialize_database():
     connection=create_connection()
     create_table(connection)

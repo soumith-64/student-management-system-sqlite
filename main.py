@@ -1,4 +1,4 @@
-from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db,search_std_db
+from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db,search_std_db,sort_students_db
 from utils.validator import (
     validate_marks,
     validate_year,
@@ -16,7 +16,7 @@ initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5,6,7}
+    opt={1,2,3,4,5,6,7,8}
     
     while True:
 
@@ -30,7 +30,8 @@ def main_menu():
         print("To Search Student Info Press - 4")
         print("To Delete Student Info Press - 5")
         print("To View Statistics press - 6")
-        print("To Exit Press - 7")
+        print("To Sort and view press - 7")
+        print("To Exit Press - 8")
         print("")
 
         try:
@@ -56,6 +57,8 @@ def main_menu():
             elif user_choice == 6:
                 std_statistcs()
             elif user_choice == 7:
+                sort_std()
+            elif user_choice == 8:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -451,6 +454,53 @@ def search_std():
                     display_student_info(val)
     else:
         print("Please enter only give options")
+
+
+def sort_std():
+    while True: 
+        print("========================================================================")
+        print("                             STUDENT DATA SORT                          ")
+        print("========================================================================\n")  
+        print("Choose the Sorting Value : \n")
+        print("To SORT by Roll num - 1")
+        print("To SORT by Name - 2")
+        print("To SORT by Department - 3")
+        print("To SORT by Year - 4")
+        print("To SORT by Average - 5")
+        print("To SORT by Grade - 6")
+        print("To SORT by Created At - 7")
+        print("To Go Back press - 8\n")
+
+        try:
+            usr_inp = int(input("Choice : "))
+            print("")
+
+            if usr_inp == 8:
+                print("Going Back...")
+                sleep(.5)
+                break
+
+            print("Ascending -- 1\n")
+            print("Descending -- 2\n")
+            ord_ch = int(input("Order Choice : "))
+            if ord_ch in (1,2) and usr_inp in (1,2,3,4,5,6,7):
+
+                or_ch = {
+                    1:"ASC",
+                    2:"DESC"
+                }
+                order_arng = or_ch.get(ord_ch)
+                res_lst = sort_students_db(usr_inp,order_arng)
+
+                for val in res_lst:
+                    display_student_info(val)
+            else:
+                print("Please choose only from given options")
+                
+
+        except ValueError:
+            print("Please enter only numbers")
+
 
 
 
