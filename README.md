@@ -631,3 +631,150 @@ Each feature was implemented only after understanding the underlying concepts, m
 
 ---
 
+# 🗂 Repository Standards
+
+✔ Clean Folder Structure
+
+✔ Modular Architecture
+
+✔ Consistent Naming
+
+✔ Meaningful Commit History
+
+✔ Parameterized SQL Queries
+
+✔ Comprehensive Documentation
+
+✔ MIT License
+
+✔ Version Controlled Development
+
+✔ Beginner Friendly
+
+---
+
+# 🎯 Future Goals
+
+This project will continue evolving beyond Version 2.
+
+### Planned Enhancements
+
+- 📄 CSV Export
+- 💾 Backup & Restore
+- 🧪 Unit Testing
+- 📑 PDF Report Generation
+- 🖥 Tkinter GUI
+- 🌐 Flask Web Application
+- 🔑 User Authentication
+- 🌍 REST API
+- ☁ Cloud Database Support
+
+---
+
+# 📜 Version History
+
+| Version | Status | Description |
+|----------|:------:|-------------|
+| **v1.0** | ✅ Released | Text File Based Student Management System |
+| **v2.0.0-alpha** | 🚧 Current | SQLite Edition |
+| **v2.0.0-beta** | ⏳ Planned | CSV Export & Backup |
+| **v2.0.0** | 🚀 Upcoming | Stable Release |
+| **v3.0** | 🔮 Future | Object-Oriented Edition |
+| **v4.0** | 🔮 Future | Tkinter GUI |
+| **v5.0** | 🔮 Future | Flask Web Application |
+
+---
+
+# 👨‍💻 About the Developer
+
+<div align="center">
+
+## Soumith J. V.
+
+### Python Developer • Computer Science Student • Open Source Learner
+
+Passionate about building complete software projects from scratch while learning professional software engineering principles.
+
+Currently exploring:
+
+🐍 Python
+
+🗄 SQLite
+
+💾 Database Systems
+
+⚙ Software Engineering
+
+🌐 Backend Development
+
+🚀 Open Source
+
+---
+
+### 🌐 Connect With Me
+
+<a href="https://github.com/soumith-64">
+<img src="https://img.shields.io/badge/GitHub-soumith--64-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<a href="https://www.linkedin.com/in/soumith-j-v-56042b407/">
+<img src="https://img.shields.io/badge/LinkedIn-Soumith_J._V.-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+
+</div>
+
+---
+
+# 🌟 Support the Project
+
+If you found this project useful or learned something from it, please consider giving it a ⭐ on GitHub.
+
+It motivates me to continue building, improving, and sharing open-source projects.
+
+---
+
+# 🙏 Acknowledgements
+
+Special thanks to the amazing communities and tools that made this project possible.
+
+- 🐍 Python Software Foundation
+- 🗄 SQLite Developers
+- 🌿 Git
+- 🐙 GitHub
+- 💻 Visual Studio Code
+- 🌍 Open Source Community
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+See the **LICENSE** file for more information.
+
+---
+
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=3000&pause=1200&color=00F7FF&center=true&vCenter=true&width=850&lines=Thank+you+for+visiting!;Built+with+Python+and+SQLite.;Learning+through+building.;See+you+in+Version+3.0!"/>
+
+---
+
+# ⭐ Student Management System
+
+### Built with ❤️ using Python & SQLite
+
+<img src="https://img.shields.io/badge/Made%20with-Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
+<img src="https://img.shields.io/badge/Open%20Source-❤-red?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Version-v2.0.0--alpha-blueviolet?style=for-the-badge"/>
+
+---
+
+### ⭐ Thank you for visiting my repository!
+
+**Happy Coding! 🚀**
+
+© 2026 **Soumith J. V.**
+
+</div>
