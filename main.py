@@ -485,11 +485,11 @@ def sort_std():
             ord_ch = int(input("Order Choice : "))
             if ord_ch in (1,2) and usr_inp in (1,2,3,4,5,6,7):
 
-                or_ch = {
+                order_map = {
                     1:"ASC",
                     2:"DESC"
                 }
-                order_arng = or_ch.get(ord_ch)
+                order_arng = order_map.get(ord_ch)
                 res_lst = sort_students_db(usr_inp,order_arng)
 
                 for val in res_lst:
