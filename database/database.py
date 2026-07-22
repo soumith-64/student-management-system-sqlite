@@ -220,6 +220,24 @@ def sort_students_db(column_no, order):
     connection.close()
     return res
 
+def get_col_name():
+    connection = create_connection()
+    cursor = connection.cursor()
+    col_name = []
+
+    try:
+        cursor.execute(""" SELECT * FROM student """)     
+        col_name = [description[0] for description in cursor.description]
+    except sqlite3.Error as e:
+        print(f"database error {e}")
+    
+    finally:   
+        cursor.close()
+        connection.close()
+
+    return col_name
+    
+
 def initialize_database():
     connection=create_connection()
     create_table(connection)

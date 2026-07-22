@@ -1,4 +1,4 @@
-from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db,search_std_db,sort_students_db
+from database.database import initialize_database,add_student_db,view_std,get_std,update_student_db,delete_std_db,statistics_db,search_std_db,sort_students_db,get_col_name
 from utils.validator import (
     validate_marks,
     validate_year,
@@ -11,12 +11,14 @@ from utils.validator import (
     validate_dob
 )
 from utils.helpers import (get_valid_input,get_valid_updt_input)
+from exports.export_csv import export_csv_std
 from time import sleep
+import time
 initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5,6,7,8}
+    opt={1,2,3,4,5,6,7,8,9}
     
     while True:
 
@@ -31,7 +33,8 @@ def main_menu():
         print("To Delete Student Info Press - 5")
         print("To View Statistics press - 6")
         print("To Sort and view press - 7")
-        print("To Exit Press - 8")
+        print("To Export data as csv press - 8")
+        print("To Exit Press - 9")
         print("")
 
         try:
@@ -59,6 +62,8 @@ def main_menu():
             elif user_choice == 7:
                 sort_std()
             elif user_choice == 8:
+                export_csv()
+            elif user_choice == 9:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -502,6 +507,18 @@ def sort_std():
             print("Please enter only numbers")
 
 
-
+def export_csv():
+    data_std = view_std()
+    col_name_std = get_col_name()
+    start = time.perf_counter()
+    count_std = len(data_std)
+    path = export_csv_std(data_std,col_name_std)
+    end = time.perf_counter()
+    exp_time = round(end - start,4)
+    if path == None:
+        print("Export Failed ❌")
+        return
+    print(f"Sucessfully Created csv file as students_export.csv ✅ in {exp_time} seconds at {path} and exported {count_std} students info")
+    
 
 main_menu()

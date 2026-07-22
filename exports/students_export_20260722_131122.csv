@@ -1,0 +1,6 @@
+id,roll_no,name,dob,department,year,section,father_name,mother_name,parent_phone,email,python_marks,math_marks,english_marks,total,average,grade,status,created_at
+1,1011,Soumith.J.V,10/12/2008,cse,2030,ab-01gd,Vijay Anand R,Jayalakshmi R,9585894845,Soumith82@gmail.com,100.0,100.0,100.0,300.0,100.0,A+,Pass,2026-07-18 17:16:22
+2,1013,Sanju,31/05/2011,SCH,1,ssw-1,Vijay Anand R,Jayalakshmi R,7904964525,sanju@gmail.com,99.0,99.0,99.0,297.0,99.0,A+,Pass,2026-07-21 15:18:04
+3,1017,khbkjf,10/11/2000,FGBH,3,fdsb,sdfg,sfdg,1234567890,wdhvb@gmail.com,66.0,77.0,88.0,231.0,77.0,B,Pass,2026-07-21 15:18:47
+4,1019,jhkfdb,21/11/2004,V,4,fsdg,sfdg,sfgdh,1234567890,fbhk@gmail.com,99.0,45.0,43.0,187.0,62.33,C,Pass,2026-07-21 15:19:35
+5,1000,fhjb,19/04/2003,BHGKJDV,3,orinfv,apfuovgh,jdfhbv,1234567890,fsjhb@gmail.com,76.0,67.0,54.0,197.0,65.67,C,Pass,2026-07-21 15:20:22
