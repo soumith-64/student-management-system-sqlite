@@ -675,7 +675,7 @@ This project will continue evolving beyond Version 2.
 
 | Version | Status | Description |
 |----------|:------:|-------------|
-| **v1.0** | ✅ Released | Text File Based Student Management System |
+| **v1.0.0** | ✅ Released | Text File Based Student Management System |
 | **v2.0.0-alpha** | 🚧 Current | SQLite Edition |
 | **v2.0.0-beta** | ⏳ Planned | CSV Export & Backup |
 | **v2.0.0** | 🚀 Upcoming | Stable Release |
