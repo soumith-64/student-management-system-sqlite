@@ -701,6 +701,8 @@ Currently exploring:
 
 🗄 SQLite
 
+🌿 GIT & GITHUB
+
 💾 Database Systems
 
 ⚙ Software Engineering
