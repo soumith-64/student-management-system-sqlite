@@ -682,6 +682,7 @@ This project will continue evolving beyond Version 2.
 | **v3.0** | 🔮 Future | Object-Oriented Edition |
 | **v4.0** | 🔮 Future | Tkinter GUI |
 | **v5.0** | 🔮 Future | Flask Web Application |
+| **v6.0** | 🔮 Future |  Mobile App |
 
 ---
 
