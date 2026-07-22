@@ -689,7 +689,7 @@ This project will continue evolving beyond Version 2.
 
 <div align="center">
 
-## Soumith J. V.
+## Soumith J.V.
 
 ### Python Developer • Computer Science Student • Open Source Learner
 
