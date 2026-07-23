@@ -1,0 +1,34 @@
+def backup_restore_std():   
+    print("========================================================================")
+    print("                              DATABASE BACKUP                           ")
+    print("========================================================================\n")
+    print("To Create Backup press -1")
+    print("To Restore Backup press -2")
+    print("To View Backup press -3")
+    print("To Delete Backup press -4")
+    print("To Go-Back -5\n")
+    opt = [1,2,3,4,5]
+    while True:
+        try:
+            usr_inp = int(input("Your Choice : "))
+            if usr_inp in opt:
+                if usr_inp == 1:
+                    create_backup()
+                elif usr_inp == 2:
+                elif usr_inp == 3:
+                elif usr_inp == 4:
+                elif usr_inp == 5:
+                
+                break
+            else:
+                print("Enter a Option only which is given")
+        except ValueError:
+            print("Please enter only numbers")
+
+def create_backup():
+    pass
+
+def restore_backup():
+    pass
+
+def view_backup():

@@ -12,13 +12,14 @@ from utils.validator import (
 )
 from utils.helpers import (get_valid_input,get_valid_updt_input)
 from exports.export_csv import export_csv_std
+from backup.backup_restor import backup_restore_std
 from time import sleep
 import time
 initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5,6,7,8,9}
+    opt={1,2,3,4,5,6,7,8,9,0}
     
     while True:
 
@@ -34,7 +35,8 @@ def main_menu():
         print("To View Statistics press - 6")
         print("To Sort and view press - 7")
         print("To Export data as csv press - 8")
-        print("To Exit Press - 9")
+        print("To Backup & Restore press - 9")
+        print("To Exit Press - 0")
         print("")
 
         try:
@@ -64,6 +66,8 @@ def main_menu():
             elif user_choice == 8:
                 export_csv()
             elif user_choice == 9:
+                backup_restore()
+            elif user_choice == 0:
                 print("Thank You")
                 print("Waiting to manage your students again")
                 print("Exiting....")
@@ -520,5 +524,8 @@ def export_csv():
         return
     print(f"Sucessfully Created csv file as students_export.csv ✅ in {exp_time} seconds at {path} and exported {count_std} students info")
     
+
+def backup_restore():
+    backup_restore_std()
 
 main_menu()
