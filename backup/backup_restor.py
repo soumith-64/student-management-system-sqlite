@@ -89,7 +89,44 @@ def restore_backup():
 
 
 def view_backup():
-    pass
+    print("Here are the backedup files : \n")
+    print("_____________________________________________________________________________")
 
+    files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
+
+    for inx,file in enumerate(files,start=1):
+        print(f"[{inx}] - {file}")
+        print("_____________________________________________________________________________")
+
+    print("Printed all files\n")
 def delete_backup():
-    pass
+    print("⚠️ WARNING: Deleting will overwrite your current database!")
+    files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
+
+    print("Which file to delete : ")
+
+    for inx,file in enumerate(files,start=1):
+        print(f"[{inx}] - {file}\n")
+
+    while True:
+        try:
+            file_no = int(input("\nChoose a backup file number to delete (or 0 to cancel): "))
+
+            if file_no == 0:
+                print("Going Back...")
+                break
+
+            if 1<=file_no<=len(files):
+                remove_path = os.path.join(FINAL_PATH_BACKUP,files[file_no-1])
+                os.remove(remove_path)
+                print(f"Backup Files after deleting {os.path.join(FINAL_PATH_BACKUP,files[file_no-1])}")
+
+                for inx,file in enumerate(files,start=1):
+                    print(f"[{inx}] - {file}\n")
+                
+                break
+            else:
+                print("Enter a valid File No")
+
+        except:
+            print("❌ Invalid input! Please enter a number.")
