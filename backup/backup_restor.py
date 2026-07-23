@@ -35,26 +35,57 @@ def backup_restore_std():
 
 def create_backup():
     if os.path.exists(DATABASE_PATH):
+        os.makedirs(FINAL_PATH_BACKUP, exist_ok=True)
 
         start = time.perf_counter()
-        shutil.copy2(DATABASE_PATH,BACKUP_PATH)
+        shutil.copy2(DATABASE_PATH, BACKUP_PATH)
         end = time.perf_counter()
-        t_time = round(end - start , 4)
-        print(f"Created Back up sucessfully, location : {BACKUP_PATH} in {t_time} seconds\n")
-        print("Back to main menu..")
+        t_time = round(end - start, 4)
+
+        print(f"✅ Created backup successfully! Location: {BACKUP_PATH} in {t_time}s\n")
+        print("Back to main menu..\n")
+    else:
+        print("❌ Database file does not exist to back up!")
+
 
 def restore_backup():
-    print("If you replace, your current data will be deleted and backup file data will be imported .")
-    files = [f for f in os.listdir(FINAL_PATH_BACKUP)]
-    i=1
-    l = [n for n in range(len(files))]
-    for file in files:
-        print(f"To Backup {file} press - {i}\n")
-    print("cHOOSE A BACKUP FILE TO RESTORE")
-    try:
-        file_no = int(input("File No : "))
-    except ValueError:
-        print("Enter a valid num")
+    print("⚠️ WARNING: Restoring will overwrite your current database!")
+
+    if not os.path.exists(FINAL_PATH_BACKUP):
+        print("❌ No backup directory found.")
+        return
+
+    files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP, f))]
+
+    if not files:
+        print("❌ No backup files found to restore.")
+        return
+
+    print("\nAvailable Backup Files:")
+    for idx, file in enumerate(files, start=1):
+        print(f"[{idx}] - {file}")
+
+    while True:
+        try:
+            file_no = int(input("\nChoose a backup file number to restore (or 0 to cancel): "))
+            
+            if file_no == 0:
+                print("Restoration cancelled.")
+                break
+                
+            if 1 <= file_no <= len(files):
+                chosen_file = files[file_no - 1]
+                file_path = os.path.join(FINAL_PATH_BACKUP, chosen_file)
+
+                shutil.copy2(file_path, DATABASE_PATH)
+                
+                print(f"✅ Successfully restored database from '{chosen_file}'!\n")
+                break
+            else:
+                print(f"Please enter a number between 1 and {len(files)}.")
+                
+        except ValueError:
+            print("❌ Invalid input! Please enter a number.")
 
 
 def view_backup():
