@@ -26,7 +26,7 @@ def backup_restore_std():
                     delete_backup()
                 elif usr_inp == 5:
                     print("Going Back....")
-                    return
+                    return backup_restore_std()
                 break
             else:
                 print("Enter a Option only which is given")
@@ -44,6 +44,7 @@ def create_backup():
 
         print(f"✅ Created backup successfully! Location: {BACKUP_PATH} in {t_time}s\n")
         print("Back to main menu..\n")
+        return backup_restore_std()
     else:
         print("❌ Database file does not exist to back up!")
 
@@ -59,7 +60,7 @@ def restore_backup():
 
     if not files:
         print("❌ No backup files found to restore.")
-        return
+        return backup_restore_std()
 
     print("\nAvailable Backup Files:")
     for idx, file in enumerate(files, start=1):
@@ -80,7 +81,7 @@ def restore_backup():
                 shutil.copy2(file_path, DATABASE_PATH)
                 
                 print(f"✅ Successfully restored database from '{chosen_file}'!\n")
-                break
+                return backup_restore_std()
             else:
                 print(f"Please enter a number between 1 and {len(files)}.")
                 
@@ -94,13 +95,19 @@ def view_backup():
 
     files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
 
+    if not files:
+        print("There is no backup file")
+
     for inx,file in enumerate(files,start=1):
         print(f"[{inx}] - {file}")
         print("_____________________________________________________________________________")
 
     print("Printed all files\n")
+    return backup_restore_std()
+
+
 def delete_backup():
-    print("⚠️ WARNING: Deleting will overwrite your current database!")
+    print("⚠️ WARNING: Deleting will overwrite your current database!\n")
     files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
 
     print("Which file to delete : ")
@@ -110,21 +117,23 @@ def delete_backup():
 
     while True:
         try:
-            file_no = int(input("\nChoose a backup file number to delete (or 0 to cancel): "))
+            file_no = int(input("\nChoose a backup file number to delete (or 0 to cancel): \n"))
 
             if file_no == 0:
                 print("Going Back...")
-                break
+                return backup_restore_std()
 
             if 1<=file_no<=len(files):
                 remove_path = os.path.join(FINAL_PATH_BACKUP,files[file_no-1])
                 os.remove(remove_path)
-                print(f"Backup Files after deleting {os.path.join(FINAL_PATH_BACKUP,files[file_no-1])}")
+                print(f"Backup Files after deleting {os.path.join(FINAL_PATH_BACKUP,files[file_no-1])}\n")
 
-                for inx,file in enumerate(files,start=1):
+
+                n_files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
+                for inx,file in enumerate(n_files,start=1):
                     print(f"[{inx}] - {file}\n")
                 
-                break
+                return backup_restore_std()
             else:
                 print("Enter a valid File No")
 
