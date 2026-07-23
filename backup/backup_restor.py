@@ -1,3 +1,7 @@
+import shutil
+from config import DATABASE_PATH,BACKUP_PATH
+import os , time
+
 def backup_restore_std():   
     print("========================================================================")
     print("                              DATABASE BACKUP                           ")
@@ -30,7 +34,14 @@ def backup_restore_std():
             print("Please enter only numbers")
 
 def create_backup():
-    pass
+    if os.path.exists(DATABASE_PATH):
+
+        start = time.perf_counter()
+        shutil.copy2(DATABASE_PATH,BACKUP_PATH)
+        end = time.perf_counter()
+        t_time = round(end - start , 4)
+        print(f"Created Back up sucessfully, location : {BACKUP_PATH} in {t_time} seconds\n")
+        print("Back to main menu..")
 
 def restore_backup():
     pass

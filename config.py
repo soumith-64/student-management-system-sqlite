@@ -7,9 +7,9 @@ time_stamp = time.strftime("%Y%m%d_%H%M%S")
 
 DATABASE_DIR=os.path.join(BASE_DIR,"database")
 DATABASE_PATH=os.path.join(DATABASE_DIR,"student.db")
+
+
 EXPORT_DIR = os.path.join(BASE_DIR,"exports")
-
-
 EXP_PATH = f"students_export_{time_stamp}.csv"
 EXPORT_PATH = os.path.join(EXPORT_DIR,EXP_PATH)
 

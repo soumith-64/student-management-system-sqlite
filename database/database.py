@@ -237,7 +237,6 @@ def get_col_name():
 
     return col_name
     
-
 def initialize_database():
     connection=create_connection()
     create_table(connection)
