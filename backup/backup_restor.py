@@ -1,5 +1,5 @@
 import shutil
-from config import DATABASE_PATH,BACKUP_PATH
+from config import DATABASE_PATH,BACKUP_PATH,FINAL_PATH_BACKUP
 import os , time
 
 def backup_restore_std():   
@@ -44,7 +44,18 @@ def create_backup():
         print("Back to main menu..")
 
 def restore_backup():
-    pass
+    print("If you replace, your current data will be deleted and backup file data will be imported .")
+    files = [f for f in os.listdir(FINAL_PATH_BACKUP)]
+    i=1
+    l = [n for n in range(len(files))]
+    for file in files:
+        print(f"To Backup {file} press - {i}\n")
+    print("cHOOSE A BACKUP FILE TO RESTORE")
+    try:
+        file_no = int(input("File No : "))
+    except ValueError:
+        print("Enter a valid num")
+
 
 def view_backup():
     pass

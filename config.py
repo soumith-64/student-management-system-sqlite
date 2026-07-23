@@ -14,5 +14,6 @@ EXP_PATH = f"students_export_{time_stamp}.csv"
 EXPORT_PATH = os.path.join(EXPORT_DIR,EXP_PATH)
 
 BACKUP_RESTORE_DIR = os.path.join(BASE_DIR,"backup")
+FINAL_PATH_BACKUP = os.path.join(BACKUP_RESTORE_DIR,"backup_files")
 PATH_TIME = f"backup_{time_stamp}.db"
-BACKUP_PATH = os.path.join(BACKUP_RESTORE_DIR,PATH_TIME)
+BACKUP_PATH = os.path.join(FINAL_PATH_BACKUP,PATH_TIME)
