@@ -15,10 +15,14 @@ def backup_restore_std():
                 if usr_inp == 1:
                     create_backup()
                 elif usr_inp == 2:
+                    restore_backup()
                 elif usr_inp == 3:
+                    view_backup()
                 elif usr_inp == 4:
+                    delete_backup()
                 elif usr_inp == 5:
-                
+                    print("Going Back....")
+                    return
                 break
             else:
                 print("Enter a Option only which is given")
@@ -32,4 +36,7 @@ def restore_backup():
     pass
 
 def view_backup():
+    pass
+
+def delete_backup():
     pass
