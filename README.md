@@ -487,3 +487,382 @@ Unit Testing            ░░░░░░░░░░ 0%
 ## 🚀 Every feature was built to improve modularity, readability, and maintainability.
 
 </div>
+---
+
+# 🗄️ Database Design
+
+The project uses **SQLite3**, a lightweight, serverless relational database.
+
+A single table named **student** stores all student information.
+
+### Database Table
+
+| Column | Type | Description |
+|---------|------|-------------|
+| id | INTEGER | Primary Key (Auto Increment) |
+| roll_no | TEXT | Unique Roll Number |
+| name | TEXT | Student Name |
+| dob | TEXT | Date of Birth |
+| department | TEXT | Department Name |
+| year | INTEGER | Academic Year |
+| section | TEXT | Section |
+| father_name | TEXT | Father's Name |
+| mother_name | TEXT | Mother's Name |
+| parent_phone | TEXT | Parent Phone Number |
+| email | TEXT | Email Address |
+| python_marks | REAL | Python Marks |
+| math_marks | REAL | Mathematics Marks |
+| english_marks | REAL | English Marks |
+| total | REAL | Total Marks |
+| average | REAL | Average Marks |
+| grade | TEXT | Student Grade |
+| status | TEXT | Pass / Fail |
+| created_at | TEXT | Record Creation Time |
+
+---
+
+# 🏛️ Database Schema
+
+```text
++------------------------------------------------------+
+|                    STUDENT TABLE                     |
++------------------------------------------------------+
+| id (PK)                                              |
+| roll_no (UNIQUE)                                     |
+| name                                                 |
+| dob                                                  |
+| department                                           |
+| year                                                 |
+| section                                              |
+| father_name                                          |
+| mother_name                                          |
+| parent_phone                                         |
+| email                                                |
+| python_marks                                         |
+| math_marks                                           |
+| english_marks                                        |
+| total                                                |
+| average                                              |
+| grade                                                |
+| status                                               |
+| created_at                                           |
++------------------------------------------------------+
+```
+
+---
+
+# 🏗️ Software Architecture
+
+The project follows a **modular architecture**, where each module has a single responsibility.
+
+```text
+                    main.py
+                       │
+      ┌────────────────┼────────────────┐
+      │                │                │
+      ▼                ▼                ▼
+ Database        Validation       Helper Functions
+      │
+      ▼
+ SQLite Database
+      │
+      ├──────────────┐
+      ▼              ▼
+CSV Export     Backup & Restore
+```
+
+---
+
+# 📂 Module Responsibilities
+
+## 📌 main.py
+
+Acts as the entry point of the application.
+
+Responsible for:
+
+- Displaying menus
+- Taking user input
+- Calling appropriate modules
+- Coordinating application flow
+
+---
+
+## 📌 database.py
+
+Handles every database operation.
+
+Functions include:
+
+- Database Initialization
+- Create Table
+- Add Student
+- View Students
+- Search Students
+- Update Student
+- Delete Student
+- Statistics
+- Sorting
+- Column Retrieval
+
+---
+
+## 📌 validator.py
+
+Responsible for validating user input.
+
+Validation includes:
+
+- Roll Number
+- Name
+- Department
+- Date of Birth
+- Phone Number
+- Email
+- Marks
+- Year
+- Section
+
+---
+
+## 📌 helpers.py
+
+Contains reusable helper functions for taking validated user input.
+
+Examples:
+
+- Input Validation Loop
+- Update Input Handler
+
+---
+
+## 📌 export_csv.py
+
+Responsible for exporting student records into CSV format.
+
+Features:
+
+- Dynamic Column Headers
+- UTF-8 Encoding
+- Timestamped File Name
+- Error Handling
+
+---
+
+## 📌 backup_restore.py
+
+Responsible for database backup management.
+
+Supports:
+
+- Create Backup
+- Restore Backup
+- View Backup Files
+- Delete Backup Files
+
+Uses:
+
+- shutil
+- os
+- time
+
+---
+
+# 🔄 CRUD Workflow
+
+```mermaid
+flowchart LR
+
+A[User Input]
+
+A --> B[Validation]
+
+B --> C[Business Logic]
+
+C --> D[(SQLite Database)]
+
+D --> E[Success Message]
+```
+
+---
+
+# 🔍 Search Workflow
+
+```mermaid
+flowchart TD
+
+A[Search Menu]
+
+A --> B[Choose Search Type]
+
+B --> C[Build SQL Query]
+
+C --> D[SQLite Database]
+
+D --> E[Display Matching Students]
+```
+
+---
+
+# 📊 Statistics Workflow
+
+```mermaid
+flowchart TD
+
+A[Statistics]
+
+A --> B[SQL Aggregate Functions]
+
+B --> C[COUNT]
+
+B --> D[MAX]
+
+B --> E[MIN]
+
+B --> F[AVG]
+
+C --> G[Dashboard]
+
+D --> G
+
+E --> G
+
+F --> G
+```
+
+---
+
+# 📈 Sorting Workflow
+
+```mermaid
+flowchart TD
+
+A[Choose Column]
+
+A --> B[Choose Order]
+
+B --> C[ORDER BY Query]
+
+C --> D[(SQLite)]
+
+D --> E[Sorted Output]
+```
+
+---
+
+# 📄 CSV Export Workflow
+
+```mermaid
+flowchart TD
+
+A[Fetch Records]
+
+A --> B[Fetch Column Names]
+
+B --> C[Create CSV File]
+
+C --> D[Write Header]
+
+D --> E[Write Rows]
+
+E --> F[Export Complete]
+```
+
+---
+
+# 💾 Backup & Restore Workflow
+
+```mermaid
+flowchart LR
+
+A[Backup Menu]
+
+A --> B[Create Backup]
+
+A --> C[Restore Backup]
+
+A --> D[View Backup]
+
+A --> E[Delete Backup]
+
+B --> F[(student.db)]
+
+F --> G[backups Folder]
+
+C --> G
+
+G --> F
+```
+
+---
+
+# 🧠 Design Principles
+
+This project follows several software engineering principles.
+
+### ✅ Modular Programming
+
+Each module performs one dedicated task.
+
+---
+
+### ✅ Separation of Concerns
+
+Database logic, validation, export, backup, and user interface are separated into different modules.
+
+---
+
+### ✅ Single Responsibility Principle (SRP)
+
+Each Python file has one primary responsibility.
+
+Examples:
+
+- `database.py` → Database Operations
+- `validator.py` → Input Validation
+- `export_csv.py` → CSV Export
+- `backup_restore.py` → Backup Management
+
+---
+
+### ✅ Code Reusability
+
+Helper functions are reused throughout the project to avoid duplicate code.
+
+---
+
+### ✅ Error Handling
+
+The application uses exception handling to prevent unexpected crashes during:
+
+- Database Operations
+- File Handling
+- User Input
+- CSV Export
+- Backup Operations
+
+---
+
+# 📦 Project Statistics
+
+| Metric | Value |
+|---------|------:|
+| Programming Language | Python |
+| Database | SQLite3 |
+| Modules | 6+ |
+| CRUD Operations | 4 |
+| Search Types | 4 |
+| Sort Options | 7 |
+| Statistics | 12 |
+| CSV Export | Yes |
+| Backup System | Yes |
+| Restore System | Yes |
+| Validation Functions | 9+ |
+
+---
+
+<div align="center">
+
+## 💡 Clean Architecture + Modular Design = Maintainable Software
+
+</div>
