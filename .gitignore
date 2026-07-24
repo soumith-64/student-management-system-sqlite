@@ -1,47 +1,119 @@
-# ==========================================
-# 🐍 Python Bytecode & Cache (Crucial!)
-# ==========================================
+# =====================================================
+# 🐍 Python Bytecode & Virtual Environments
+# =====================================================
+
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .Python
+
+# Virtual Environments
 env/
 venv/
 .venv/
 ENV/
 
-# ==========================================
-# 💾 Local Databases & System States
-# ==========================================
-# Keeps your actual student database out of GitHub 
-# (Highly recommended so you don't overwrite data between computers)
+# =====================================================
+# 💾 SQLite Database Files
+# =====================================================
+
+# Ignore local databases
 database/*.db
+database/*.sqlite
 database/*.sqlite3
 
-# ==========================================
-# 📁 IDE / Editor Settings (VS Code & PyCharm)
-# ==========================================
+# Optional: Ignore all SQLite databases
+# *.db
+# *.sqlite
+# *.sqlite3
+
+# =====================================================
+# 📄 Generated CSV Exports
+# =====================================================
+
+exports/*.csv
+
+# =====================================================
+# 💾 Database Backups
+# =====================================================
+
+backups/*.db
+backups/*.sqlite
+backups/*.sqlite3
+
+# =====================================================
+# 📝 Log Files
+# =====================================================
+
+logs/
+*.log
+
+# =====================================================
+# 📊 Reports (Future)
+# =====================================================
+
+reports/
+*.pdf
+*.xlsx
+
+# =====================================================
+# 🧪 Test & Coverage Files
+# =====================================================
+
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# =====================================================
+# 📁 IDE & Editor Settings
+# =====================================================
+
 .vscode/
 .idea/
+
+*.iml
 *.suo
-*.ntvs*
-*.njsproj
-*.sln
+*.user
+*.userosscache
+*.sln.docstates
 *.swp
+*.swo
+*~
 
-# ==========================================
-# 📊 OS Junk Files
-# ==========================================
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# =====================================================
+# 💻 Operating System Files
+# =====================================================
+
 .DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
 
-# ==========================================
-# 📦 Dynamic Project Folders (Optional)
-# ==========================================
-# Uncomment these if you want your generated backups 
-# and excel/csv reports to remain local only:
-# backup/
-# exports/
+# =====================================================
+# 🚀 Build & Distribution
+# =====================================================
+
+build/
+dist/
+*.egg-info/
+
+# =====================================================
+# 🔐 Environment Variables
+# =====================================================
+
+.env
+.env.*
+
+# =====================================================
+# 🗂 Temporary Files
+# =====================================================
+
+*.tmp
+*.temp
+
+# =====================================================
+# 🔥 Miscellaneous
+# =====================================================
+
+.cache/
