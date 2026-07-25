@@ -1322,7 +1322,7 @@ Their tools and resources made this project possible.
 
 If you found this project helpful:
 
-🌟 Star this repository
+🌟 Star this repository pls
 
 🍴 Fork it
 
