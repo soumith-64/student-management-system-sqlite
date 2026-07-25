@@ -1092,7 +1092,7 @@ Developing this project helped strengthen my understanding of:
 ```text
 Overall Completion
 
-███████████████████████████████████████████████████ 98%
+███████████████████████████████████████████████████ 99%
 
 Completed Modules
 
