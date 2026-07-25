@@ -1077,7 +1077,7 @@ Developing this project helped strengthen my understanding of:
 - Database Design
 - Python Programming
 - Software Architecture
-- SQL
+- SQL,SQL Lite
 - File Handling
 - Error Handling
 - Project Organization
