@@ -1311,7 +1311,7 @@ Special thanks to:
 - Python Community
 - SQLite Developers
 - Open Source Contributors
-- GitHub
+- GitHub,Git
 - Everyone who provides feedback and suggestions
 
 Their tools and resources made this project possible.
