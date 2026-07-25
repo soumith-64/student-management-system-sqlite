@@ -1197,7 +1197,6 @@ This project is licensed under the **MIT License**.
 You are free to:
 
 - ✅ Use
-- ✅ Modify
 - ✅ Distribute
 - ✅ Learn from the project
 
