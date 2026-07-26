@@ -835,7 +835,7 @@ Helper functions are reused throughout the project to avoid duplicate code.
 
 The application uses exception handling to prevent unexpected crashes during:
 
-- Database Operations
+- Database Operations(SQL Lite)
 - File Handling
 - User Input
 - CSV Export
