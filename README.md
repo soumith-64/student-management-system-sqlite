@@ -849,7 +849,7 @@ The application uses exception handling to prevent unexpected crashes during:
 |---------|------:|
 | Programming Language | Python |
 | Database | SQLite3 |
-| Modules | 6+ |
+| Modules | 7+ |
 | CRUD Operations | 4 |
 | Search Types | 4 |
 | Sort Options | 7 |
