@@ -581,7 +581,7 @@ Acts as the entry point of the application.
 
 Responsible for:
 
-- Displaying menus
+- Displaying menu
 - Taking user input
 - Calling appropriate modules
 - Coordinating application flow
