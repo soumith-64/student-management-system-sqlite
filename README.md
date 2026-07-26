@@ -820,7 +820,7 @@ Examples:
 
 - `database.py` → Database Operations
 - `validator.py` → Input Validation
-- `export_csv.py` → CSV Export
+- `export_csv.py` → CSV Exports
 - `backup_restore.py` → Backup Management
 
 ---
