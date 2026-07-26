@@ -839,7 +839,7 @@ The application uses exception handling to prevent unexpected crashes during:
 - File Handling
 - User Input
 - CSV Export
-- Backup & Restore Operations
+- Backup & Restore Operation's
 
 ---
 
