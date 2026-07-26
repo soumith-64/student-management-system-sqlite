@@ -553,7 +553,7 @@ A single table named **student** stores all student information.
 
 # 🏗️ Software Architecture
 
-The project follows a **modular architecture**, where each module has a single responsibility.
+The project follows a **modular architecture**, where each modules has a single responsibility.
 
 ```text
                     main.py
