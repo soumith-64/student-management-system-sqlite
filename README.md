@@ -430,7 +430,7 @@ This project helped in learning:
 - Search Functionality
 - Statistics Dashboard
 - Student Sorting
-- CSV Export
+- CSV Exports
 - Backup & Restore
 - Input Validation
 - Modular Architecture
