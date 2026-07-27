@@ -448,7 +448,7 @@ This project helped in learning:
 
 - Unit Testing
 - Custom Exceptions
-- PDF Report Generation
+- PDF Report Generations
 - Tkinter GUI
 - Flask Web Version
 - REST API
