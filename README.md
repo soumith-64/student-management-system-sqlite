@@ -260,7 +260,7 @@ Store complete student information including:
 
 ## 👀 View Students
 
-Displays every student stored in the database in a clean and readable format.
+Displays every students stored in the database in a clean and readable format.
 
 ---
 
