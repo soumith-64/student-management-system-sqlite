@@ -411,7 +411,7 @@ This project helped in learning:
 - CRUD Operations
 - Modular Programming
 - Functions
-- Exception Handling
+- Exceptions Handling
 - File Handling
 - CSV Processing
 - Database Backup
