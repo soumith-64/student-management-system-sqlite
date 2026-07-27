@@ -491,7 +491,7 @@ Unit Testing            ░░░░░░░░░░ 0%
 
 # 🗄️ Database Design
 
-The project uses **SQLite3**, a lightweight, serverless relational database.
+The project uses **SQLite3**, a lightweight, serverless relational databases.
 
 A single table named **student** stores all student information.
 
