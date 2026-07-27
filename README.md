@@ -473,7 +473,7 @@ CSV Export              ██████████ 100%
 
 Backup & Restore        ██████████ 100%
 
-Documentation           ████████░░ 80%
+Documentation           ████████░░ 89%
 
 Logging                 ███░░░░░░░ 30%
 
