@@ -388,7 +388,7 @@ N --> B
 
 # 📸 Screenshots
 
-> Screenshots will be added in future releases.
+> Screenshot will be added in future releases.
 
 Suggested screenshots:
 
