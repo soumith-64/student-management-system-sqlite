@@ -47,7 +47,6 @@ def validate_roll_no(rollnum):
     for char in temp:
         if not (char.isalnum() or char in ("-", "/")):
             raise ValueError("Roll Num can only contain numbers, letters, '-', and '/'")
-
     return temp
 
 

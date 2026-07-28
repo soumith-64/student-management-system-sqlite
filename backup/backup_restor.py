@@ -1,6 +1,7 @@
 import shutil
 from config import DATABASE_PATH,BACKUP_PATH,FINAL_PATH_BACKUP
 import os , time
+from utils.logging import logg
 
 def backup_restore_std():   
     print("========================================================================")
@@ -44,9 +45,11 @@ def create_backup():
 
         print(f"✅ Created backup successfully! Location: {BACKUP_PATH} in {t_time}s\n")
         print("Back to main menu..\n")
+        logg("Backup","Backup Created")
         return backup_restore_std()
     else:
         print("❌ Database file does not exist to back up!")
+        logg("Error","Database not found to backup")
 
 
 def restore_backup():
@@ -54,12 +57,14 @@ def restore_backup():
 
     if not os.path.exists(FINAL_PATH_BACKUP):
         print("❌ No backup directory found.")
+        logg("Error","Location not found to restore")
         return
 
     files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP, f))]
 
     if not files:
         print("❌ No backup files found to restore.")
+        logg("Error","No backup file found")
         return backup_restore_std()
 
     print("\nAvailable Backup Files:")
@@ -72,6 +77,7 @@ def restore_backup():
             
             if file_no == 0:
                 print("Restoration cancelled.")
+                logg("Aborted"," Restoration")
                 break
                 
             if 1 <= file_no <= len(files):
@@ -81,6 +87,7 @@ def restore_backup():
                 shutil.copy2(file_path, DATABASE_PATH)
                 
                 print(f"✅ Successfully restored database from '{chosen_file}'!\n")
+                logg("Restored","Successfully restored database")
                 return backup_restore_std()
             else:
                 print(f"Please enter a number between 1 and {len(files)}.")
@@ -132,7 +139,8 @@ def delete_backup():
                 n_files = [f for f in os.listdir(FINAL_PATH_BACKUP) if os.path.isfile(os.path.join(FINAL_PATH_BACKUP,f))]
                 for inx,file in enumerate(n_files,start=1):
                     print(f"[{inx}] - {file}\n")
-                
+
+                logg("Deleted","Successfully Deleted Backup")
                 return backup_restore_std()
             else:
                 print("Enter a valid File No")

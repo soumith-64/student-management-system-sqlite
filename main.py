@@ -12,6 +12,7 @@ from utils.validator import (
 )
 from utils.helpers import (get_valid_input,get_valid_updt_input)
 from exports.export_csv import export_csv_std
+from utils.logging import logg
 from backup.backup_restor import backup_restore_std
 from time import sleep
 import time
@@ -36,6 +37,7 @@ def main_menu():
         print("To Sort and view press - 7")
         print("To Export data as csv press - 8")
         print("To Backup & Restore press - 9")
+        print("To view log - 10")
         print("To Exit Press - 0")
         print("")
 
@@ -67,6 +69,8 @@ def main_menu():
                 export_csv()
             elif user_choice == 9:
                 backup_restore()
+            elif user_choice == 10:
+                view_log()
             elif user_choice == 0:
                 print("Thank You")
                 print("Waiting to manage your students again")
@@ -176,9 +180,7 @@ def add_students():
      parent_phone, email, python_marks, math_marks, english_marks, total, 
      average, grade, status) = get_input()
      
-    add_student_db(roll_no, name, dob, department, year, section, father_name, 
-                   mother_name, parent_phone, email, python_marks, math_marks, 
-                   english_marks, total, average, grade, status)
+    logg("added","Roll No : "+str(roll_no))
     print("🎉 Student added successfully to the database!\n")
 
 
@@ -186,7 +188,8 @@ def display_student_info(student_detail):
     
     if not student_detail:
         print("📂 No student records found.\n")
-        return
+        logg("Error"," No data to update")
+        return 
         
     else:    
         print("========================================================================")
@@ -242,6 +245,7 @@ def get_all_students():
     
     if not students_list:
         print("📂 No student records found.\n")
+        logg("Error"," No Std Data Found")
         return
         
     print("========================================================================")
@@ -341,39 +345,47 @@ def get_updt_input(dtls):
             english_marks, total, avg, grade, status)
 
 def update_student_info():
-        print("========================================================================")
-        print("                       STUDENTS DETAIL UPDATE                           ")
-        print("========================================================================\n")
+    print("========================================================================")
+    print("                       STUDENTS DETAIL UPDATE                           ")
+    print("========================================================================\n")
 
-        student_rollnum = input("Enter The Student Roll Number : ")
-        print("")
-        print("Student Detail Before Editing ")
-        print("")
-        old_detail=get_std(student_rollnum)
-        display_student_info(old_detail)
-        print(" ---Enter new details--- \n")
-        get_updt_inp=get_updt_input(old_detail)
-        (nrollnum, nname, ndob, ndepartment, nyear, nsection, nfather_name, 
-        nmother_name, nparent_phone, nemail, npython_marks, nmath_marks, 
-        nenglish_marks, ntotal, navg, ngrade, nstatus)=get_updt_inp
-        print(" ---Enter new details--- ")
+    student_rollnum = int(validate_roll_no(input("Enter The Student Roll Number : ")))
+    print("")
+    
+    old_detail = get_std(student_rollnum)
+    
+    if old_detail is None:
+        print("❌ Error: No student found with that roll number!\n")
+        logg("Error", "Student not found for update")
+        return  
 
+    print("Student Detail Before Editing ")
+    print("")
+    display_student_info(old_detail)
+    
+    print(" ---Enter new details--- \n")
+    get_updt_inp = get_updt_input(old_detail)
+    (nrollnum, nname, ndob, ndepartment, nyear, nsection, nfather_name, 
+     nmother_name, nparent_phone, nemail, npython_marks, nmath_marks, 
+     nenglish_marks, ntotal, navg, ngrade, nstatus) = get_updt_inp
 
-        try:
-            update_student_db(student_rollnum,nrollnum, nname, ndob, ndepartment, nyear, nsection, nfather_name, 
-                   nmother_name, nparent_phone, nemail, npython_marks, nmath_marks, 
-                   nenglish_marks, ntotal, navg, ngrade, nstatus)
-            print("\n" + "="*50)
-            print("🎉 SUCCESS: Student details updated successfully!\n")
-            print("="*50 + "\n")
+    try:
+        update_student_db(student_rollnum, nrollnum, nname, ndob, ndepartment, nyear, nsection, nfather_name, 
+            nmother_name, nparent_phone, nemail, npython_marks, nmath_marks, 
+            nenglish_marks, ntotal, navg, ngrade, nstatus)
+        logg("Updated", "Roll No : " + str(student_rollnum))
+        print("\n" + "="*50)
+        print("🎉 SUCCESS: Student details updated successfully!\n")
+        print("="*50 + "\n")
 
-            print("Student Detail After Updating ")
-            updt_details = get_std(nrollnum)
-            display_student_info(updt_details)
-        except Exception as e:
-            print("\n" + "="*50)
-            print(f"❌ ERROR: Failed to update student. Reason: {e}")
-            print("="*50 + "\n")
+        print("Student Detail After Updating ")
+        updt_details = get_std(nrollnum)
+        display_student_info(updt_details)
+    except Exception as e:
+        print("\n" + "="*50)
+        print(f"❌ ERROR: Failed to update student. Reason: {e}")
+        print("="*50 + "\n")
+        logg("Error", "Failed to Update Student")
 
 def delete_student():
     print("---Enter Student Roll Number To Delete---")
@@ -381,6 +393,7 @@ def delete_student():
     std_inf = get_std(drollnum)
     if std_inf == None:
         print("Sorry No Data Found")
+        logg("Error"," No data to delete")
     else:
         display_student_info(std_inf)
         print("")
@@ -393,17 +406,21 @@ def delete_student():
                 opt_inp = int(input("Your Choice : "))
             except ValueError:
                 print("Please Enter only numbers")
+                logg("Error"," Invalid Data Type in Delete Option")
 
             if opt_inp in opt:
                 if opt_inp == 1:
                     delete_std_db(drollnum)
                     print("User Deleted Sucessfully ✅")
+                    logg("Deleted","Roll No :"+drollnum)
                     break
                 elif opt_inp == 2:
                     print("Operation Aborted Sucessfully ❌")
+                    logg("Error"," Delete Operation Aborted")
                     break
             else:
                 print("Try again")
+                logg("Error"," Invalid Option in Delete")
 
 def std_statistcs()     :
         
@@ -445,6 +462,7 @@ def search_std():
             break
         except ValueError:
             print("Please enetr only the visible options\n")
+            logg("Error"," Invalid Data type in Search")
     if usr_inp in opt :
         print("Enter the search value : ")
         value = input("Value : ")
@@ -457,12 +475,14 @@ def search_std():
 
             if not res_lst:
                 print("Sorry No data found with given data ")
+                logg("Error"," No data in Search")
                 return
             else:
                 for val in res_lst:
                     display_student_info(val)
     else:
         print("Please enter only give options")
+        logg("Error"," Invalid Option in Search")
 
 
 def sort_std():
@@ -505,10 +525,12 @@ def sort_std():
                     display_student_info(val)
             else:
                 print("Please choose only from given options")
+                logg("Error"," Invalid Option in Sort")
                 
 
         except ValueError:
             print("Please enter only numbers")
+            logg("Error"," Invalid Type data in Sort option")
 
 
 def export_csv():
@@ -521,11 +543,16 @@ def export_csv():
     exp_time = round(end - start,4)
     if path == None:
         print("Export Failed ❌")
+        logg("Error"," Export Failed")
         return
     print(f"Sucessfully Created csv file as students_export.csv ✅ in {exp_time} seconds at {path} and exported {count_std} students info")
+    logg("CSV Export ",str(count_std)+" Students")
     
 
 def backup_restore():
     backup_restore_std()
+
+def view_log():
+    pass
 
 main_menu()

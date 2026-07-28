@@ -17,3 +17,5 @@ BACKUP_RESTORE_DIR = os.path.join(BASE_DIR,"backup")
 FINAL_PATH_BACKUP = os.path.join(BACKUP_RESTORE_DIR,"backup_files")
 PATH_TIME = f"backup_{time_stamp}.db"
 BACKUP_PATH = os.path.join(FINAL_PATH_BACKUP,PATH_TIME)
+
+LOGGING_FOLDER = os.path.join(BASE_DIR,"logs")
