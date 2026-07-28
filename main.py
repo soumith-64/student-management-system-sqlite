@@ -20,7 +20,7 @@ initialize_database()
 
 def main_menu():
 
-    opt={1,2,3,4,5,6,7,8,9,0}
+    opt={0,1,2,3,4,5,6,7,8,9,10}
     
     while True:
 
@@ -410,6 +410,7 @@ def delete_student():
             except ValueError:
                 print("Please Enter only numbers")
                 logg("Error"," Invalid Data Type in Delete Option")
+                continue
 
             if opt_inp in opt:
                 if opt_inp == 1:
@@ -544,7 +545,7 @@ def export_csv():
     path = export_csv_std(data_std,col_name_std)
     end = time.perf_counter()
     exp_time = round(end - start,4)
-    if path == None:
+    if path is None:
         print("Export Failed ❌")
         logg("Error"," Export Failed")
         return
