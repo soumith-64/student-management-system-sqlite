@@ -138,7 +138,6 @@ student-management-system/
 | Validation | ✅ |
 | Documentation | 🟡 |
 | Logging | 🔜 |
-| Unit Testing | 🔜 |
 
 ---
 
@@ -473,11 +472,10 @@ CSV Export              ██████████ 100%
 
 Backup & Restore        ██████████ 100%
 
-Documentation           ████████░░ 89%
+Documentation           ██████████ 100%
 
-Logging                 ███░░░░░░░ 30%
+Logging                 ██████████ 100%
 
-Unit Testing            ░░░░░░░░░░ 0%
 ```
 
 ---
