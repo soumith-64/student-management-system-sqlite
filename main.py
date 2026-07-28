@@ -181,6 +181,9 @@ def add_students():
      average, grade, status) = get_input()
      
     logg("added","Roll No : "+str(roll_no))
+    add_student_db(roll_no, name, dob, department, year, section, father_name, mother_name, 
+     parent_phone, email, python_marks, math_marks, english_marks, total, 
+     average, grade, status)
     print("🎉 Student added successfully to the database!\n")
 
 
